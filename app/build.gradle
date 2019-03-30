@@ -26,7 +26,7 @@ dependencies {
     implementation 'com.android.support:design:27.1.0'
     implementation 'com.android.support:support-v4:27.1.0'
     // [START gms_compile]
-    implementation 'com.google.android.gms:play-services-analytics:15.0.0'
+    implementation 'com.google.android.gms:play-services-analytics:16.0.8'
     // [END gms_compile]
 
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1') {
