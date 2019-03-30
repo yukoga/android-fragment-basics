@@ -21,22 +21,20 @@ import com.google.android.gms.analytics.HitBuilders;
  */
 public class PizzaMenuFragment extends Fragment {
     ArrayAdapter<String> itemsAdapter;
+    private MainActivity mainAct;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         itemsAdapter = new ArrayAdapter<String>(
                 getContext(), android.R.layout.simple_list_item_1, Pizza.pizzaMenu);
+        MainActivity mainAct = (MainActivity)getActivity();
     }
 
     @Override
     public View onCreateView(
             LayoutInflater inflater,
             @Nullable ViewGroup parent, @Nullable Bundle savedInstanceState) {
-        MainActivity mainAct = (MainActivity)getActivity();
-        // Google Analytics tracking code.
-        mainAct.mTracker.setScreenName("PizzaMenuFragment");
-        mainAct.mTracker.send(new HitBuilders.ScreenViewBuilder().build());
         return inflater.inflate(R.layout.fragment_pizza_menu, parent, false);
     }
 
@@ -52,6 +50,10 @@ public class PizzaMenuFragment extends Fragment {
             listener.onPizzaItemSelected(position);
           }
         });
+
+        // Google Analytics tracking code.
+        mainAct.mTracker.setScreenName("PizzaMenuFragment");
+        mainAct.mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
 
