@@ -28,7 +28,7 @@ public class PizzaMenuFragment extends Fragment {
         super.onCreate(savedInstanceState);
         itemsAdapter = new ArrayAdapter<String>(
                 getContext(), android.R.layout.simple_list_item_1, Pizza.pizzaMenu);
-        MainActivity mainAct = (MainActivity)getActivity();
+        mainAct = (MainActivity)getActivity();
     }
 
     @Override
