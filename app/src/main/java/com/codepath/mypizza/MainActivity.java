@@ -9,11 +9,9 @@ import android.widget.Toast;
 
 import com.codepath.mypizza.fragments.PizzaDetailFragment;
 import com.codepath.mypizza.fragments.PizzaMenuFragment;
+
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-
-import com.codepath.mypizza.AnalyticsApplication;
-import android.app.Application;
 
 public class MainActivity extends AppCompatActivity
         implements PizzaMenuFragment.OnItemSelectedListener {
@@ -71,27 +69,29 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onPizzaItemSelected(int position) {
-    Toast.makeText(this, "Called By Fragment A: position - "+ position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(
+                this,
+                "Called By Fragment A: position - "+ position, Toast.LENGTH_SHORT).show();
 
-    // Load Pizza Detail Fragment
-    PizzaDetailFragment secondFragment = new PizzaDetailFragment();
+        // Load Pizza Detail Fragment
+        PizzaDetailFragment secondFragment = new PizzaDetailFragment();
 
-    Bundle args = new Bundle();
-    args.putInt("position", position);
-    secondFragment.setArguments(args);
+        Bundle args = new Bundle();
+        args.putInt("position", position);
+        secondFragment.setArguments(args);
 
 
-    if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-      getSupportFragmentManager()
-          .beginTransaction()
-          .replace(R.id.flContainer2, secondFragment)
-          .commit();
-    }else{
-      getSupportFragmentManager()
-          .beginTransaction()
-          .replace(R.id.flContainer, secondFragment)
-          .addToBackStack(null)
-          .commit();
-    }
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+          getSupportFragmentManager()
+              .beginTransaction()
+              .replace(R.id.flContainer2, secondFragment)
+              .commit();
+        }else{
+          getSupportFragmentManager()
+              .beginTransaction()
+              .replace(R.id.flContainer, secondFragment)
+              .addToBackStack(null)
+              .commit();
+        }
     }
 }
