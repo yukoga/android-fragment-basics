@@ -16,9 +16,13 @@ import com.codepath.mypizza.R;
 import com.codepath.mypizza.data.Pizza;
 import com.google.android.gms.analytics.HitBuilders;
 
+import org.androidannotations.annotations.EFragment;
+
 /**
  * Created by Shyam Rokde on 8/5/16.
  */
+
+@EFragment(R.layout.fragment_pizza_menu)
 public class PizzaMenuFragment extends Fragment {
     ArrayAdapter<String> itemsAdapter;
     private MainActivity mainAct;
@@ -35,14 +39,14 @@ public class PizzaMenuFragment extends Fragment {
     public View onCreateView(
             LayoutInflater inflater,
             @Nullable ViewGroup parent, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_pizza_menu, parent, false);
+//        return inflater.inflate(R.layout.fragment_pizza_menu, parent, false);
+        return null;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         ListView lvItems = (ListView) view.findViewById(R.id.lvItems);
         lvItems.setAdapter(itemsAdapter);
-
         lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
           @Override
           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

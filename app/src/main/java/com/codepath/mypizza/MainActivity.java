@@ -8,11 +8,15 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.codepath.mypizza.fragments.PizzaDetailFragment;
+import com.codepath.mypizza.fragments.PizzaDetailFragment_;
 import com.codepath.mypizza.fragments.PizzaMenuFragment;
-
+import com.codepath.mypizza.fragments.PizzaMenuFragment_;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
+import org.androidannotations.annotations.EActivity;
+
+@EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity
         implements PizzaMenuFragment.OnItemSelectedListener {
     // define mTracker variable as a public member of MainActivity class.
@@ -21,7 +25,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
 
         // Get tracker object and store it into mTracker if mTracker is null.
         if (mTracker == null) {
@@ -48,7 +52,7 @@ public class MainActivity extends AppCompatActivity
 
         if (savedInstanceState == null) {
             // Instance of first fragment
-            PizzaMenuFragment firstFragment = new PizzaMenuFragment();
+            PizzaMenuFragment firstFragment = new PizzaMenuFragment_();
 
             // Add Fragment to FrameLayout (flContainer), using FragmentManager
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -57,7 +61,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-            PizzaDetailFragment secondFragment = new PizzaDetailFragment();
+            PizzaDetailFragment secondFragment = new PizzaDetailFragment_();
             Bundle args = new Bundle();
             args.putInt("position", 0);
             secondFragment.setArguments(args);
@@ -74,7 +78,7 @@ public class MainActivity extends AppCompatActivity
                 "Called By Fragment A: position - "+ position, Toast.LENGTH_SHORT).show();
 
         // Load Pizza Detail Fragment
-        PizzaDetailFragment secondFragment = new PizzaDetailFragment();
+        PizzaDetailFragment secondFragment = new PizzaDetailFragment_();
 
         Bundle args = new Bundle();
         args.putInt("position", position);

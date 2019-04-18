@@ -19,14 +19,20 @@ android {
     }
 }
 
+def AAVersion = "4.6.0"
+def GMPVersion = "16.0.8"
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
+    implementation "org.androidannotations:androidannotations-api:$AAVersion"
     testImplementation 'junit:junit:4.12'
     implementation 'com.android.support:appcompat-v7:27.1.0'
     implementation 'com.android.support:design:27.1.0'
     implementation 'com.android.support:support-v4:27.1.0'
     // [START gms_compile]
-    implementation 'com.google.android.gms:play-services-analytics:16.0.8'
+    implementation "com.google.firebase:firebase-core:$GMPVersion"
+    implementation "com.google.android.gms:play-services-analytics:$GMPVersion"
+    implementation "com.google.android.gms:play-services-tagmanager:$GMPVersion"
     // [END gms_compile]
 
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1') {
