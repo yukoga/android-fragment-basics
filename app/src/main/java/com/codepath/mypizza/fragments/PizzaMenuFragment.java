@@ -58,6 +58,11 @@ public class PizzaMenuFragment extends Fragment {
         // Google Analytics tracking code.
         mainAct.mTracker.setScreenName("PizzaMenuFragment");
         mainAct.mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+        // Firebase logEvent
+        Bundle params = new Bundle();
+        params.putString("screen_name", "PizzaMenuFragment - GTM");
+        mainAct.mFirebaseAnalytics.logEvent("screenview", params);
     }
 
 

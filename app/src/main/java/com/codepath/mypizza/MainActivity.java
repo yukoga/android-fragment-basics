@@ -13,6 +13,7 @@ import com.codepath.mypizza.fragments.PizzaMenuFragment;
 import com.codepath.mypizza.fragments.PizzaMenuFragment_;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.androidannotations.annotations.EActivity;
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity
         implements PizzaMenuFragment.OnItemSelectedListener {
     // define mTracker variable as a public member of MainActivity class.
     public Tracker mTracker;
+    public FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,12 @@ public class MainActivity extends AppCompatActivity
             AnalyticsApplication application = (AnalyticsApplication) getApplication();
             mTracker = application.getDefaultTracker();
         }
+
+        // Get firebase analytics object.
+        if (mFirebaseAnalytics == null) {
+            mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        }
+
         // Set screen name
         mTracker.setScreenName("MainActivity");
         // Set custom dimension value.
